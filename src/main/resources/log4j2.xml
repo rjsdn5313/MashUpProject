@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<configuration>
+     <appenders>
+         <!-- console appender 설정 -->
+         <Console name="Console" target="SYSTEM_OUT">
+             <!-- layout 설정 -->
+             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
+ 
+     </appenders>
+     
+     <loggers>
+       <!-- Application Loggers -->
+      <logger name="com" level="debug" additivity="false">
+         <appender-ref ref="Console" level="debug"/>
+      </logger>
+      
+      <!-- Query Loggers -->
+      <logger name="jdbc.sqlonly" level="debug" additivity="false">
+         <appender-ref ref="Console" level="debug"/>
+      </logger>
+      
+      <logger name="jdbc.resultsettable" level="debug" additivity="false">
+         <appender-ref ref="Console"/>
+      </logger>
+ 
+     
+      <!-- root는 기본적으로 하나가 존재해야 하며 다른 logger들은 여러개 존재 가능 -->
+      <root level="off">
+          <appender-ref ref="Console" />
+      </root>
+     </loggers>
+ 
+</configuration>
