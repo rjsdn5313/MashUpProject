@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="data">	
+	
+	<!-- 무인민원발급정보데이터 -->
+	<insert id="insert_complain" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO tb_complain(
+				Place,
+				Address,
+				Location,
+				Latitude,
+				Longitude
+			)
+			VALUES(
+				#{PLACE},
+				#{ADDRESS},
+				#{LOCATION},
+				#{LATITUDE},
+				#{LONGITUDE}
+			)
+		]]>
+	</insert>
+	
+	<!-- CCTV표준데이터 -->
+	<insert id="insert_cctv" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO tb_cctv(
+				FilmingInformation,
+				Address,
+				Purpose,
+				Latitude,
+				Longitude
+			)
+			VALUES(
+				#{FILMINGINFORMATION},
+				#{ADDRESS},
+				#{PURPOSE},
+				#{LATITUDE},
+				#{LONGITUDE}
+			)
+		]]>
+	</insert>
+	
+	<!-- 어린이보호구역데이터 -->
+	<insert id="insert_children" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO tb_children(
+				ObjName,
+				Address,
+				PoliceArea,
+				Latitude,
+				Longitude
+			)
+			VALUES(
+				#{OBJNAME},
+				#{ADDRESS},
+				#{POLICEAREA},
+				#{LATITUDE},
+				#{LONGITUDE}
+			)
+		]]>
+	</insert>
+	
+	<!-- 교통단속카메라데이터 -->
+	<insert id="insert_trafficcontrol" parameterType="hashmap">
+		<![CDATA[
+			INSERT INTO tb_trafficcontrol(
+				Place,
+				Address,
+				Speedlimit,
+				Latitude,
+				Longitude
+			)
+			VALUES(
+				#{PLACE},
+				#{ADDRESS},
+				#{SPEEDLIMIT},
+				#{LATITUDE},
+				#{LONGITUDE}
+			)
+		]]>
+	</insert>
+</mapper>

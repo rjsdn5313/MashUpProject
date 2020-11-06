@@ -15,7 +15,9 @@
 <div class="container-fluid">
 	<table style="width:100%; height:10vh;">
 		<tr>
-			<td style="width:15%">로고</td>
+			<td style="width:15%">로고
+				<a href="<c:url value='/InDataBase.do'/>">테스트</a>
+			</td>
 			<td style="width:85%" class="text-center align-middle">
 				<span class='green_window'>
 					<input type='text' class='input_text' name='search_keyword' id='search_keyword'/>
@@ -57,7 +59,7 @@
 				fn_searchData();
 			});
 			
-			$("#search_keyword").keydown(function(e){				//엔터키 이벤트
+			$("#search_keyword").keydown(function(e){				//Enter key event
 				if(e.keyCode == 13){
 					e.preventDefault();
 					fn_searchData();
@@ -87,7 +89,7 @@
 		
 		//체크박스 만들기
 		function fn_madeCheckBox(data){
-			var chbhtml = ""; 
+			var chbhtml = "";
 			
 			for(i=0; i<data.length; i++){
 				chbhtml += "<input type='checkbox' id='chkId_" + i + "' class='chkbox' value='" + data[i] + "' name='checkbox_'" + i + ">"+ data[i] + "<br>";
@@ -111,14 +113,14 @@
 		        		data: {name:chk},
 		        		success: function(data){
 		        			if (data.length > 0) {
-		        				$("#ListDiv_Search").remove();
+		        				$("#ListDiv_Search").remove();						//검색했던 마커, 리스트 초기화
 		        				for(i=0; i<searchMarker.length; i++){
 									searchMarker[i].setMap(null);
 								}
 		        				
 		        				html +=  "<div id='ListDiv_" + ChkBoxId + "'>";
 		        				for(i=0; i<20; i++) {
-		        					fn_madeMarker(data[i]);							// 체크 될 경우 데이터에 맞게 다중 마커 생성 
+		        					fn_madeMarker(data[i]);						 		// 체크 될 경우 데이터에 맞게 다중 마커 생성 
 		        					html += fn_showList(data[i], ChkBoxId, i);			// 체크 될 경우 목록 리스트를 가져와서 보여준다.
 		        				}
 		        				html += "</div>"
@@ -135,11 +137,13 @@
 		        					map.setCenter(selectdata);
 		        					
 		        					var tmpMarker = markersList[$(this).find("#markerChkBoxId").val()][$(this).find("#markeri").val()];	// 마커 가져오기
-		        					tmpMarker.setAnimation(naver.maps.Animation.BOUNCE);	// 마커 애니메이션 설정
+		        					tmpMarker.setAnimation(naver.maps.Animation.BOUNCE)
+		        					;	// 마커 애니메이션 설정
 		        					
 		        					map.setOptions({
 		        						zoom:13
 		        					});
+		        					
 		        				});
 		        			}
 		        		},
@@ -283,7 +287,7 @@
 							$("input:checkbox[class=chkbox]").each(function(){
 								this.checked = false;
 							});
-							
+								
 							var html = "";
 							//
 							
@@ -296,8 +300,8 @@
 							
 							searchMarker = markers;
 							var searchDataListHtml = html;
-							
 							html = "";
+												
 							markers = [];
 							
 							$("#show").append(searchDataListHtml);
@@ -305,7 +309,6 @@
 							$(".datacl").on("click",function(e){
 								e.preventDefault();
 	        					var selectdata = new naver.maps.LatLng($(this).find("#x").val(), $(this).find("#y").val());
-	        					
 	        					map.setCenter(selectdata);
 	        					
 	        					map.setOptions({

@@ -31,6 +31,11 @@ public class MapController {
         return mv;
     }
     
+    @RequestMapping(value="/InDataBase.do")
+    public void InDataBase() throws Exception{
+    	mainService.InDataBase();
+    }
+    
     @RequestMapping(value="/openDataList.do")
     public @ResponseBody List<String> openDataList() throws Exception{
     	return mainService.openDataList();

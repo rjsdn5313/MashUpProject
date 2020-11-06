@@ -7,4 +7,6 @@ public interface MainService {
 	List<String> openDataList() throws Exception;
 	List<Object> showData(String Listname) throws Exception;
 	List<Map<String, Object>> searchData(String search_keyword) throws Exception;
+	
+	void InDataBase() throws Exception;
 }
